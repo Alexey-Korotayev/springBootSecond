@@ -1,0 +1,48 @@
+app:
+  application:
+     message = Start message...
+
+
+spring:
+  #External application.yml location that replaced defaults
+  #config:
+   # location: ./
+
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost/vts2
+        username: root
+        password: root
+        tomcat:
+          initial-size: 5
+          max-active: 350
+          max-idle: 100
+          max-wait: 25000
+          log-abandoned: true
+          log-validation-errors: true
+          remove-abandoned: false
+          remove-abandoned-timeout: 60
+          test-on-borrow: true
+          test-on-connect: true
+          test-on-return: true
+          validation-query: select 1
+
+
+
+    jpa:
+        properties:
+          hibernate:
+            jdbc:
+              batch_size: 30
+            use_sql_comments: true
+            show_sql: false
+            format_sql: false
+            hbm2ddl:
+              auto: validate
+            ejb:
+              naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+            connection:
+              charSet: UTF-8
+            dialect: org.hibernate.dialect.PostgreSQL95Dialect
+            temp:
+              use_jdbc_metadata_defaults: false
